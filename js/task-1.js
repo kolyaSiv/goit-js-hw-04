@@ -1,14 +1,18 @@
 function isEnoughCapacity(products, containerSize) {
   let totalQuantity = 0;
   for (let product in products) {
-    totalQuantity += products[product];
+    if (products.hasOwnProperty(product)) {
+      totalQuantity += products[product];
+    }
   }
 
   return totalQuantity <= containerSize;
 }
 
-console.log(isEnoughCapacity({ apples: 2, grapes: 4 }, 10));
-console.log(isEnoughCapacity({ apples: 2, grapes: 4 }, 5));
-console.log(isEnoughCapacity({ apples: 2, grapes: 4 }, 6));
-console.log(isEnoughCapacity({ apples: 2, grapes: 4, bananas: 1 }, 7));
-console.log(isEnoughCapacity({ apples: 2, grapes: 4, bananas: 2 }, 7));
+console.log(isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8));
+
+console.log(isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12));
+
+console.log(isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14));
+
+console.log(isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7));
